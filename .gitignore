@@ -19,3 +19,6 @@ yarn-error.log
 # Editor/OS-specific configurations
 .vscode/
 .idea/
+
+# pnpm lock
+pnpm-lock.yaml
