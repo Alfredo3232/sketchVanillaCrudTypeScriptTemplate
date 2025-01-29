@@ -1,7 +1,7 @@
-import { Client } from "pg";
+import { Pool } from "pg";
 
 const startDB = (env: DepsType["cleanEnv"]["pg"]) => {
-    const client = new Client({
+    const pool = new Pool({
         user     : env.user,
         host     : env.host,
         database : env.database,
@@ -9,29 +9,24 @@ const startDB = (env: DepsType["cleanEnv"]["pg"]) => {
         port     : env.port
     });
 
-    const connectDB = async () => {
+    (async () => {
         try {
-            await client.connect(); // Establish connection
+            await pool.connect();
             console.log("Connected to the somnia database!");
         } catch (err) {
             console.error("Error connecting to the database:", err);
         }
-    };
+    })();
 
     const closeDB = async () => {
-        await client.end();
+        await pool.end();
         console.log("Database connection closed.");
     };
 
-    // Execute the connection and query functions
-    connectDB();
-
     return {
-        client,
+        pool,
         closeDB
     };
 };
 
-export default {
-    startDB
-};
+export default startDB;
