@@ -1,7 +1,12 @@
 import app from "./app";
 
-import { todosRoutes } from "../modules/todos";
+import todosRoutes from "../modules/todos/todos.routes";
 
-app.use("/users", todosRoutes);
+const initializeRouter = (deps: DepsType) => {
+    app.use("/todo", todosRoutes(deps));
 
-export default app;
+    return app;
+};
+
+
+export default initializeRouter;

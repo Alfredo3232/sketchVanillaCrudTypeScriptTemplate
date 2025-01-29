@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 // import { pool } from "../../services/db/db";
 
-const insertTodo = async (req: Request, res: Response) => {
-    console.log("Hello");
+const insertTodo = (deps: DepsType) => async (req: Request, res: Response) => {
+    console.log("Hello", deps);
 
     // try {
     //     const { title, completed } = req.body;
@@ -20,7 +20,7 @@ const insertTodo = async (req: Request, res: Response) => {
     // }
 };
 
-const getAllTodos = async (req: Request, res: Response) => {
+const getAllTodos = (deps: DepsType) => async (req: Request, res: Response) => {
     console.log("Hello");
 
     // try {
@@ -32,7 +32,7 @@ const getAllTodos = async (req: Request, res: Response) => {
     // }
 };
 
-const getTodoById = async (req: Request, res: Response) => {
+const getTodoById = (deps: DepsType) => async (req: Request, res: Response) => {
     console.log("Hello");
 
     // try {
@@ -51,7 +51,7 @@ const getTodoById = async (req: Request, res: Response) => {
     // }
 };
 
-const updateTodoById = async (req: Request, res: Response) => {
+const updateTodoById = (deps: DepsType) => async (req: Request, res: Response) => {
     console.log("Hello");
 
     // try {
@@ -76,7 +76,7 @@ const updateTodoById = async (req: Request, res: Response) => {
     // }
 };
 
-const deleteTodoById = async (req: Request, res: Response) => {
+const deleteTodoById = (deps: DepsType) => async (req: Request, res: Response) => {
     console.log("Hello");
 
     // try {

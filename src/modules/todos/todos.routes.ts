@@ -1,6 +1,4 @@
-import {
-    Router
-} from "express";
+import { Router } from "express";
 import {
     insertTodo,
     getAllTodos,
@@ -8,17 +6,25 @@ import {
     updateTodoById,
     deleteTodoById
 } from "./todos.controller";
-// import { pool } from "../../services/db/db";
 const router = Router();
 
-router.post("/", insertTodo);
+const todosRoutes = (deps: DepsType) => {
+    const initialize = {
+        insertTodo     : insertTodo(deps),
+        getAllTodos    : getAllTodos(deps),
+        getTodoById    : getTodoById(deps),
+        updateTodoById : updateTodoById(deps),
+        deleteTodoById : deleteTodoById(deps)
+    };
 
-router.get("/", getAllTodos);
+    router
+        .post("/", initialize.insertTodo)
+        .get("/", initialize.getAllTodos)
+        .get("/:id", initialize.getTodoById)
+        .put("/:id", initialize.updateTodoById)
+        .delete("/:id", initialize.deleteTodoById);
 
-router.get("/:id", getTodoById);
+    return router;
+};
 
-router.put("/:id", updateTodoById);
-
-router.delete("/:id", deleteTodoById);
-
-export default router;
+export default todosRoutes;

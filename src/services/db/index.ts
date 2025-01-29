@@ -1,14 +1,6 @@
 import { Client } from "pg";
 
-interface pg {
-    database: string | undefined;
-    host: string | undefined;
-    password: string | undefined;
-    port: number | undefined;
-    user: string | undefined;
-}
-
-const startDB = (env: pg) => {
+const startDB = (env: DepsType["cleanEnv"]["pg"]) => {
     const client = new Client({
         user     : env.user,
         host     : env.host,
