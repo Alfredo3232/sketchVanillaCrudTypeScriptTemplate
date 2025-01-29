@@ -8,5 +8,4 @@ const initializeRouter = (deps: DepsType) => {
     return app;
 };
 
-
 export default initializeRouter;
