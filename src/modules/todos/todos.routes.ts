@@ -9,20 +9,12 @@ import {
 const router = Router();
 
 const todosRoutes = (deps: DepsType) => {
-    const initialize = {
-        insertTodo     : insertTodo(deps),
-        getAllTodos    : getAllTodos(deps),
-        getTodoById    : getTodoById(deps),
-        updateTodoById : updateTodoById(deps),
-        deleteTodoById : deleteTodoById(deps)
-    };
-
     router
-        .post("/", initialize.insertTodo)
-        .get("/", initialize.getAllTodos)
-        .get("/:id", initialize.getTodoById)
-        .put("/:id", initialize.updateTodoById)
-        .delete("/:id", initialize.deleteTodoById);
+        .post("/", insertTodo(deps))
+        .get("/", getAllTodos(deps))
+        .get("/:id", getTodoById(deps))
+        .put("/:id", updateTodoById(deps))
+        .delete("/:id", deleteTodoById(deps));
 
     return router;
 };
